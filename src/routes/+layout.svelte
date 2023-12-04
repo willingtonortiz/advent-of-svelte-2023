@@ -5,4 +5,6 @@
 
 <Header />
 
-<slot />
+<div class="mx-auto max-w-screen-lg px-12">
+  <slot />
+</div>
