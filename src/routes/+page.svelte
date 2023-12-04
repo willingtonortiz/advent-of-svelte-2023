@@ -236,7 +236,7 @@
         <li class="transition-transform hover:scale-105" transition:fade={{ delay: index * 100 }}>
           <a
             href={challenge.slug}
-            class="h-28 px-4 py-2 block border rounded-lg relative {!challenge.done &&
+            class="h-28 px-4 py-2 block border rounded-lg relative {!challenge.isDone &&
               'pointer-events-none bg-gray-200'}"
           >
             <h2 class="text-lg font-semibold">
@@ -250,7 +250,7 @@
                 : 'text-red-500'}">{challenge.id.toString().padStart(2, "0")}</span
             >
             <span class="absolute left-4 bottom-2">
-              {#if challenge.done}
+              {#if challenge.isDone}
                 <Check class="text-green-500" />
               {:else}
                 <Clock class="text-yellow-500" />
