@@ -1,6 +1,6 @@
 <script lang="ts">
   import { z } from "zod";
-  import { Circle, X, Plus } from "lucide-svelte";
+  import { Circle, X, Plus, Trash, ArrowUp, ArrowDown } from "lucide-svelte";
 
   const ZChild = z.object({
     name: z.string({ required_error: "Name is required" }),
@@ -35,7 +35,7 @@
     }
 
     // Add and sort
-    const newChildren = [...children, newChild.data];
+    const newChildren = [...children, { ...newChild.data, id: crypto.randomUUID() }];
     newChildren.sort((a, b) => b.tally - a.tally);
 
     // Updating variable
@@ -47,11 +47,41 @@
 
     closeDialog();
   }
+
+  function removeChild(id: string) {
+    children = children.filter((child) => child.id !== id);
+  }
+
+  function incrementTally(id: string) {
+    const newChildren = children.map((child) => {
+      if (child.id === id) {
+        return { ...child, tally: child.tally + 1 };
+      }
+
+      return child;
+    });
+
+    newChildren.sort((a, b) => b.tally - a.tally);
+
+    children = newChildren;
+  }
+
+  function decrementTally(id: string) {
+    const newChildren = children.map((child) => {
+      if (child.id === id) {
+        return { ...child, tally: child.tally - 1 };
+      }
+
+      return child;
+    });
+
+    newChildren.sort((a, b) => b.tally - a.tally);
+
+    children = newChildren;
+  }
 </script>
 
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
-<!-- TODO: Remove child? -->
-<!-- TODO: Increment and Decrement tally -->
 
 <main class="mt-4">
   <h1 class="mb-8 font-semibold text-xl">Challenge 01 - Naughty or Nice</h1>
@@ -71,6 +101,7 @@
         <th class="border px-2 py-1">Name</th>
         <th class="border px-2 py-1">Tally</th>
         <th class="border px-2 py-1">Category</th>
+        <th class="border px-2 py-1">Actions</th>
       </tr>
     </thead>
 
@@ -88,6 +119,22 @@
             />
 
             <span class="ml-2">{isNice ? "Nice" : "Naughty"}</span>
+          </td>
+
+          <td class="border px-2 py-1">
+            <div class="flex flex-nowrap justify-center gap-4">
+              <button class="text-green-500" on:click={() => incrementTally(child.id)}>
+                <ArrowUp size={20} />
+              </button>
+
+              <button class="text-red-500" on:click={() => decrementTally(child.id)}>
+                <ArrowDown size={20} />
+              </button>
+
+              <button class="text-red-500" on:click={() => removeChild(child.id)}>
+                <Trash size={20} />
+              </button>
+            </div>
           </td>
         </tr>
       {/each}
