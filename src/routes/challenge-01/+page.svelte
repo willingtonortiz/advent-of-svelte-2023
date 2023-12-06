@@ -1,8 +1,8 @@
 <script lang="ts">
   import { z } from "zod";
-  import { Circle, X, Plus, Trash, ArrowUp, ArrowDown } from "lucide-svelte";
+  import { Circle, X, Plus, Trash, ArrowUp, ArrowDown, ArrowLeft } from "lucide-svelte";
 
-  const ZChild = z.object({
+  const ZAddChild = z.object({
     name: z.string({ required_error: "Name is required" }),
     tally: z.number({ required_error: "Tally is required" }),
   });
@@ -24,7 +24,7 @@
   }
 
   function addChild() {
-    const newChild = ZChild.safeParse({
+    const newChild = ZAddChild.safeParse({
       name: newName,
       tally: newTally,
     });
@@ -84,14 +84,22 @@
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
 
 <main class="mt-4">
-  <h1 class="mb-8 font-semibold text-xl">Challenge 01 - Naughty or Nice</h1>
+  <!-- Use tw-variants -->
+  <a
+    href="/"
+    class="border px-3 py-1 rounded-md transition-colors hover:bg-gray-100 inline-flex items-center mb-4"
+  >
+    <ArrowLeft class="inline mr-2" size={16} /> Back
+  </a>
+
+  <h1 class="mb-8 font-semibold text-xl uppercase">Challenge 01 - Naughty or Nice</h1>
 
   <div class="mb-4">
     <button
       class="border px-2 py-1 rounded-md transition-colors hover:bg-gray-100 flex items-center"
       on:click={openDialog}
     >
-      Add child <Plus class="inline ml-2" size={16} />
+      <Plus class="inline mr-2" size={16} /> Add child
     </button>
   </div>
 

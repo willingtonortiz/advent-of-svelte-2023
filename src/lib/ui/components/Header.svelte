@@ -6,7 +6,9 @@
 <header class="h-16 border-b px-12">
   <ul class="mx-auto max-w-screen-lg h-full flex flex-nowrap items-center">
     <li class="h-full py-2">
-      <img src={logo} class="max-h-full" alt="Advent Of Svelte 2023" />
+      <a href="/">
+        <img src={logo} class="max-h-full" alt="Advent Of Svelte 2023" />
+      </a>
     </li>
 
     <li>
