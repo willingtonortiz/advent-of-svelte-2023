@@ -84,7 +84,7 @@
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
 
 <main class="mt-4">
-  <!-- Use tw-variants -->
+  <!-- TODO: Use tw-variants -->
   <a
     href="/"
     class="border px-3 py-1 rounded-md transition-colors hover:bg-gray-100 inline-flex items-center mb-4"

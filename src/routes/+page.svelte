@@ -4,6 +4,7 @@
   import { getDate } from "date-fns";
   import { onMount } from "svelte";
   import challenge_01 from "$lib/assets/challenges/challenge-01.webp";
+  import challenge_02 from "$lib/assets/challenges/challenge-02.webp";
 
   type Challenge = {
     id: number;
@@ -19,17 +20,17 @@
       id: 1,
       slug: "challenge-01",
       title: "Naughty or Nice",
-      description: "complete...",
+      description: "Help the elves to keep track of children's behavior",
       isDone: true,
       image: challenge_01,
     },
     {
       id: 2,
       slug: "challenge-02",
-      title: "Hungry Santa",
-      description: "complete...",
-      isDone: false,
-      image: challenge_01,
+      title: "Cookies for Santa",
+      description: "Click on the colorful cookies to give them to Santa",
+      isDone: true,
+      image: challenge_02,
     },
     {
       id: 3,
@@ -45,7 +46,7 @@
       title: "challenge-04",
       description: "challange-04",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 5,
@@ -61,7 +62,7 @@
       title: "challenge-06",
       description: "challange-06",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 7,
@@ -252,31 +253,36 @@
     </div>
   </div>
 
-  <h2 class="mb-4 text-xl font-semibold">Challenges</h2>
+  <h2 class="mb-4 text-xl font-semibold text-gray-600">Challenges</h2>
 
-  <ul class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+  <ul class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
     {#each challenges as challenge, index}
       {#if areChallengesVisible && showShow(challenge)}
         {@const isEven = index % 2 === 0}
 
-        <li class="transition-transform hover:scale-105" transition:fade={{ delay: index * 100 }}>
+        <li
+          class="transition-transform hover:scale-[1.03]"
+          transition:fade={{ delay: index * 100 }}
+        >
           <a
             href={challenge.slug}
-            class="h-[360px] px-4 py-2 block shadow-md border rounded-lg relative {!challenge.isDone &&
+            class="h-[400px] px-4 py-2 block shadow-md border rounded-lg relative {!challenge.isDone &&
               'pointer-events-none blur-sm'}"
           >
             <span
               class="absolute right-4 top-2 text-4xl {isEven ? 'text-green-500' : 'text-red-500'}"
-              >{challenge.id.toString().padStart(2, "0")}</span
             >
+              {challenge.id.toString().padStart(2, "0")}
+            </span>
 
             <span class="absolute left-4 top-2">
               <span class="text-xl">{emojis[index % emojisLength]}</span>
             </span>
 
-            <h2 class="text-lg bottom-2 absolute font-semibold uppercase">
-              {challenge.title}
-            </h2>
+            <div class="bottom-2 absolute">
+              <h2 class="text-lg font-semibold text-gray-600">{challenge.title}</h2>
+              <p class="text-sm text-gray-400">{challenge.description}</p>
+            </div>
 
             <img class="mt-8" src={challenge.image} alt={challenge.title} />
           </a>
