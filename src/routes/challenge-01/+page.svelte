@@ -1,6 +1,7 @@
 <script lang="ts">
   import { z } from "zod";
   import { Circle, X, Plus, Trash, ArrowUp, ArrowDown, ArrowLeft } from "lucide-svelte";
+  import Button from "$lib/components/ui/button/button.svelte";
 
   const ZAddChild = z.object({
     name: z.string({ required_error: "Name is required" }),
@@ -84,13 +85,9 @@
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
 
 <main class="mt-4">
-  <!-- TODO: Use tw-variants -->
-  <a
-    href="/"
-    class="border px-3 py-1 rounded-md transition-colors hover:bg-gray-100 inline-flex items-center mb-4"
-  >
+  <Button variant={"outline"} href="/">
     <ArrowLeft class="inline mr-2" size={16} /> Back
-  </a>
+  </Button>
 
   <h1 class="mb-8 font-semibold text-xl uppercase">Challenge 01 - Naughty or Nice</h1>
 

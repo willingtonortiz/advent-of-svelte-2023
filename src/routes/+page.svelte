@@ -37,7 +37,7 @@
       slug: "challenge-03",
       title: "Sled Load Balancer",
       description: "complete...",
-      isDone: false,
+      isDone: true,
       image: challenge_01,
     },
     {

@@ -1,9 +1,10 @@
 <script lang="ts">
   import { ArrowLeft } from "lucide-svelte";
+  import { slide } from "svelte/transition";
+  import Button from "$lib/components/ui/button/button.svelte";
   import santaNormal from "$lib/assets/challenge-02/santa-normal.webp";
   import santaHappy from "$lib/assets/challenge-02/santa-happy.webp";
   import Cookie from "./Cookie.svelte";
-  import { crossfade, slide } from "svelte/transition";
 
   let totalCookies = 0;
   $: blackCookies = Math.floor(totalCookies / 1000);
@@ -45,13 +46,9 @@
 </script>
 
 <main class="mt-4">
-  <!-- TODO: Use tw-variants -->
-  <a
-    href="/"
-    class="border px-3 py-1 rounded-md transition-colors hover:bg-gray-100 inline-flex items-center mb-4"
-  >
+  <Button variant={"outline"} href="/">
     <ArrowLeft class="inline mr-2" size={16} /> Back
-  </a>
+  </Button>
 
   <h1 class="mb-12 font-semibold text-xl uppercase">Challenge 02 - Cookies for Santa</h1>
 
