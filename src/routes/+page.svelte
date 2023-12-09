@@ -51,9 +51,9 @@
     {
       id: 5,
       slug: "challenge-05",
-      title: "challenge-05",
-      description: "challange-05",
-      isDone: false,
+      title: "Elf Productivity Dashboard",
+      description: "Elf Productivity Dashboard",
+      isDone: true,
       image: challenge_01,
     },
     {
@@ -230,26 +230,26 @@
 </script>
 
 <main class="mt-8">
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+  <div class="grid grid-cols-1 gap-4 mb-8 md:grid-cols-3">
     <div
-      class="border border-green-200 px-4 py-2 rounded-lg bg-green-50 transition-shadow hover:shadow-md hover:shadow-green-200"
+      class="px-4 py-2 transition-shadow border border-green-200 rounded-lg bg-green-50 hover:shadow-md hover:shadow-green-200"
     >
       <h1><Gift class="inline text-green-500" /> Completed</h1>
-      <span class="text-4xl block mt-2">{completedChallenges}</span>
+      <span class="block mt-2 text-4xl">{completedChallenges}</span>
     </div>
 
     <div
-      class="border border-yellow-200 px-4 py-2 rounded-lg bg-yellow-50 transition-shadow hover:shadow-md hover:shadow-yellow-200"
+      class="px-4 py-2 transition-shadow border border-yellow-200 rounded-lg bg-yellow-50 hover:shadow-md hover:shadow-yellow-200"
     >
-      <h1><Clock class="inline text-yellow-500 mr-2" />Uncompleted</h1>
-      <span class="text-4xl block mt-2">{uncompletedChallenges}</span>
+      <h1><Clock class="inline mr-2 text-yellow-500" />Uncompleted</h1>
+      <span class="block mt-2 text-4xl">{uncompletedChallenges}</span>
     </div>
 
     <div
-      class="border px-4 py-2 rounded-lg border-blue-200 bg-blue-50 transition-shadow hover:shadow-md hover:shadow-blue-200"
+      class="px-4 py-2 transition-shadow border border-blue-200 rounded-lg bg-blue-50 hover:shadow-md hover:shadow-blue-200"
     >
       <h1><TreePine class="inline text-blue-500 " /> Total</h1>
-      <span class="text-4xl block mt-2">{totalChallenges}</span>
+      <span class="block mt-2 text-4xl">{totalChallenges}</span>
     </div>
   </div>
 
