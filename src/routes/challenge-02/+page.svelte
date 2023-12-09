@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { ArrowLeft } from "lucide-svelte";
   import { slide } from "svelte/transition";
-  import Button from "$lib/components/ui/button/button.svelte";
   import santaNormal from "$lib/assets/challenge-02/santa-normal.webp";
   import santaHappy from "$lib/assets/challenge-02/santa-happy.webp";
+  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
+  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
   import Cookie from "./Cookie.svelte";
 
   let totalCookies = 0;
@@ -46,14 +46,12 @@
 </script>
 
 <main class="mt-4">
-  <Button variant={"outline"} href="/">
-    <ArrowLeft class="inline mr-2" size={16} /> Back
-  </Button>
+  <ChallengeBackButton />
 
-  <h1 class="mb-12 font-semibold text-xl uppercase">Challenge 02 - Cookies for Santa</h1>
+  <ChallengeTitle>Challenge 02 - Cookies for Santa</ChallengeTitle>
 
-  <div class="grid grid-cols-3 items-start">
-    <div class="flex flex-col flex-nowrap gap-4 justify-self-start p-4 bg-gray-100 rounded-lg">
+  <div class="grid items-start grid-cols-3">
+    <div class="flex flex-col gap-4 p-4 bg-gray-100 rounded-lg flex-nowrap justify-self-start">
       <h2 class="text-lg">Click any cookie!!!</h2>
       <Cookie color="red" on:click={addRedCookie} />
       <Cookie color="green" on:click={addGreenCookie} />
@@ -61,24 +59,24 @@
       <Cookie color="black" on:click={addBlackCookie} />
     </div>
 
-    <div class="place-self-center flex flex-col flex-nowrap items-center">
+    <div class="flex flex-col items-center place-self-center flex-nowrap">
       <div class="relative w-32 h-64">
         <img
           src={santaNormal}
-          class="w-full h-full absolute left-0 top-0 hover:opacity-0"
+          class="absolute top-0 left-0 w-full h-full hover:opacity-0"
           alt="Santa Normal"
         />
 
         <img
           src={santaHappy}
-          class="w-full h-full absolute left-0 top-0 opacity-0 transition-transform hover:opacity-100 hover:scale-105"
+          class="absolute top-0 left-0 w-full h-full transition-transform opacity-0 hover:opacity-100 hover:scale-105"
           alt="Santa Happy"
         />
       </div>
 
       <h2 class="mt-4 text-lg text-center">
         Santa ate
-        <div class="inline-flex flex-col flex-nowrap overflow-hidden">
+        <div class="inline-flex flex-col overflow-hidden flex-nowrap">
           {#key totalCookies}
             <span in:slide class="inline">
               {totalCookies}
@@ -89,10 +87,10 @@
       </h2>
     </div>
 
-    <div class="flex flex-col flex-nowrap gap-4 justify-self-end p-4 bg-gray-100 rounded-lg">
+    <div class="flex flex-col gap-4 p-4 bg-gray-100 rounded-lg flex-nowrap justify-self-end">
       <h2 class="text-lg">Equivalences</h2>
 
-      <div class="flex flex-nowrap items-center gap-2">
+      <div class="flex items-center gap-2 flex-nowrap">
         <Cookie class="inline" color="red" />
         <span class="text-lg">x10</span>
         <span class="text-2xl">=</span>
@@ -100,7 +98,7 @@
         <span class="text-lg">x1</span>
       </div>
 
-      <div class="flex flex-nowrap items-center gap-2">
+      <div class="flex items-center gap-2 flex-nowrap">
         <Cookie class="inline" color="green" />
         <span class="text-lg">x10</span>
         <span class="text-2xl">=</span>
@@ -108,7 +106,7 @@
         <span class="text-lg">x1</span>
       </div>
 
-      <div class="flex flex-nowrap items-center gap-2">
+      <div class="flex items-center gap-2 flex-nowrap">
         <Cookie class="inline" color="blue" />
         <span class="text-lg">x10</span>
         <span class="text-2xl">=</span>
@@ -121,7 +119,7 @@
   <p class="mt-4 mb-2 text-sm">Click a cookie to remove it</p>
 
   {#if totalCookies > 0}
-    <div class="flex flex-wrap gap-4 mb-12 p-4 bg-gray-100 rounded-lg">
+    <div class="flex flex-wrap gap-4 p-4 mb-12 bg-gray-100 rounded-lg">
       {#each Array.from({ length: blackCookies }) as _}
         <Cookie color="black" on:click={removeBlackCookie} />
       {/each}

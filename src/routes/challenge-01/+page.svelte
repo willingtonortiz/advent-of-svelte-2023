@@ -1,7 +1,8 @@
 <script lang="ts">
   import { z } from "zod";
-  import { Circle, X, Plus, Trash, ArrowUp, ArrowDown, ArrowLeft } from "lucide-svelte";
-  import Button from "$lib/components/ui/button/button.svelte";
+  import { Circle, X, Plus, Trash, ArrowUp, ArrowDown } from "lucide-svelte";
+  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
+  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
 
   const ZAddChild = z.object({
     name: z.string({ required_error: "Name is required" }),
@@ -85,28 +86,26 @@
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
 
 <main class="mt-4">
-  <Button variant={"outline"} href="/">
-    <ArrowLeft class="inline mr-2" size={16} /> Back
-  </Button>
+  <ChallengeBackButton />
 
-  <h1 class="mb-8 font-semibold text-xl uppercase">Challenge 01 - Naughty or Nice</h1>
+  <ChallengeTitle>Challenge 01 - Naughty or Nice</ChallengeTitle>
 
   <div class="mb-4">
     <button
-      class="border px-2 py-1 rounded-md transition-colors hover:bg-gray-100 flex items-center"
+      class="flex items-center px-2 py-1 transition-colors border rounded-md hover:bg-gray-100"
       on:click={openDialog}
     >
       <Plus class="inline mr-2" size={16} /> Add child
     </button>
   </div>
 
-  <table class="border w-full">
+  <table class="w-full border">
     <thead>
       <tr>
-        <th class="border px-2 py-1">Name</th>
-        <th class="border px-2 py-1">Tally</th>
-        <th class="border px-2 py-1">Category</th>
-        <th class="border px-2 py-1">Actions</th>
+        <th class="px-2 py-1 border">Name</th>
+        <th class="px-2 py-1 border">Tally</th>
+        <th class="px-2 py-1 border">Category</th>
+        <th class="px-2 py-1 border">Actions</th>
       </tr>
     </thead>
 
@@ -114,9 +113,9 @@
       {#each children as child}
         {@const isNice = child.tally > 0}
         <tr>
-          <td class="border px-2 py-1">{child.name}</td>
-          <td class="border px-2 py-1">{child.tally}</td>
-          <td class="border px-2 py-1">
+          <td class="px-2 py-1 border">{child.name}</td>
+          <td class="px-2 py-1 border">{child.tally}</td>
+          <td class="px-2 py-1 border">
             <Circle
               class="inline {isNice
                 ? 'fill-green-400 text-green-400'
@@ -126,8 +125,8 @@
             <span class="ml-2">{isNice ? "Nice" : "Naughty"}</span>
           </td>
 
-          <td class="border px-2 py-1">
-            <div class="flex flex-nowrap justify-center gap-4">
+          <td class="px-2 py-1 border">
+            <div class="flex justify-center gap-4 flex-nowrap">
               <button class="text-green-500" on:click={() => incrementTally(child.id)}>
                 <ArrowUp size={20} />
               </button>
@@ -155,14 +154,14 @@
     <X class="absolute right-2 top-2" />
   </button>
 
-  <h1 class="text-xl font-semibold mb-4">Add child</h1>
+  <h1 class="mb-4 text-xl font-semibold">Add child</h1>
 
-  <div class="flex flex-col flex-nowrap gap-1 mb-2">
+  <div class="flex flex-col gap-1 mb-2 flex-nowrap">
     <label for="name">Name</label>
     <input id="name" name="name" type="text" bind:value={newName} />
   </div>
 
-  <div class="flex flex-col flex-nowrap gap-1 mb-4">
+  <div class="flex flex-col gap-1 mb-4 flex-nowrap">
     <label for="tally">Tally</label>
     <input id="tally" name="tally" type="number" bind:value={newTally} />
   </div>
@@ -171,14 +170,14 @@
     <ul>
       {#each errors as error}
         <li>
-          <p class="text-red-500 text-sm">{error.message}</p>
+          <p class="text-sm text-red-500">{error.message}</p>
         </li>
       {/each}
     </ul>
   {/if}
 
   <button
-    class="w-full border px-2 py-1 rounded-md transition-colors hover:bg-gray-100 my-8"
+    class="w-full px-2 py-1 my-8 transition-colors border rounded-md hover:bg-gray-100"
     on:click={addChild}
   >
     Register

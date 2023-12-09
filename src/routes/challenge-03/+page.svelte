@@ -4,6 +4,8 @@
   import Button from "$lib/components/ui/button/button.svelte";
   import Progress from "$lib/components/ui/progress/progress.svelte";
   import { cn } from "$lib/utils.js";
+  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
+  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
   import type { Present } from "./+page.server.js";
 
   export let data;
@@ -27,29 +29,27 @@
 </script>
 
 <main class="mt-4 mb-12">
-  <Button variant={"outline"} href="/">
-    <ArrowLeft class="inline mr-2" size={16} /> Back
-  </Button>
+  <ChallengeBackButton />
 
-  <h1 class="my-8 font-semibold text-xl uppercase">Challenge 03 - Sleigh Load Balancer</h1>
+  <ChallengeTitle>Challenge 03 - Sleigh Load Balancer</ChallengeTitle>
 
   <div class="grid grid-cols-2 gap-8">
     <div>
-      <div class="h-18 px-4 py-2 border rounded-lg mb-6 bg-gray-50">
+      <div class="px-4 py-2 mb-6 border rounded-lg h-18 bg-gray-50">
         <span class="block text-sm">Total Weight</span>
 
-        <div class="flex flex-nowrap items-center gap-4">
+        <div class="flex items-center gap-4 flex-nowrap">
           <span class="block text-2xl font-semibold">{totalWeight.toFixed(2)} Kg</span>
         </div>
       </div>
 
-      <h2 class="mb-2 font-semibold text-lg">Children presents ({presents.length})</h2>
+      <h2 class="mb-2 text-lg font-semibold">Children presents ({presents.length})</h2>
 
       <ul
         class="max-h-[500px] border rounded-lg px-4 py-2 overflow-y-scroll flex flex-col flex-nowrap gap-6"
       >
         {#each presents as present (present.id)}
-          <li class="flex flex-nowrap items-center justify-between" in:slide>
+          <li class="flex items-center justify-between flex-nowrap" in:slide>
             <div>
               <span class="font-semibold w-[80px] inline-block">{present.name}</span>
               <span>{present.weight.toFixed(2)} Kg</span>
@@ -72,10 +72,10 @@
     </div>
 
     <div>
-      <div class="h-18 px-4 py-2 border rounded-lg mb-6 bg-gray-50">
+      <div class="px-4 py-2 mb-6 border rounded-lg h-18 bg-gray-50">
         <span class="block text-sm">Total Weight</span>
 
-        <div class="flex flex-nowrap items-center gap-4">
+        <div class="flex items-center gap-4 flex-nowrap">
           <span class="block text-2xl font-semibold">{sleighTotalWeight.toFixed(2)} Kg</span>
 
           <Progress
@@ -90,13 +90,13 @@
         </div>
       </div>
 
-      <h2 class="mb-2 font-semibold text-lg">Sleigh presents ({sleighPresents.length})</h2>
+      <h2 class="mb-2 text-lg font-semibold">Sleigh presents ({sleighPresents.length})</h2>
 
       <ul
         class="max-h-[500px] border rounded-lg px-4 py-2 overflow-y-scroll flex flex-col flex-nowrap gap-6"
       >
         {#each sleighPresents as present (present.id)}
-          <li class="flex flex-nowrap items-center justify-between" in:slide>
+          <li class="flex items-center justify-between flex-nowrap" in:slide>
             <div>
               <span class="font-semibold w-[80px] inline-block">{present.name}</span>
               <span>{present.weight.toFixed(2)} Kg</span>

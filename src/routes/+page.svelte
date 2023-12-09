@@ -36,16 +36,16 @@
       id: 3,
       slug: "challenge-03",
       title: "Sled Load Balancer",
-      description: "complete...",
+      description: "Sled Load Balancer",
       isDone: true,
       image: challenge_01,
     },
     {
       id: 4,
       slug: "challenge-04",
-      title: "challenge-04",
-      description: "challange-04",
-      isDone: false,
+      title: "Santa's Heart Rate Monitor",
+      description: "Santa's Heart Rate Monitor",
+      isDone: true,
       image: challenge_02,
     },
     {
@@ -255,7 +255,7 @@
 
   <h2 class="mb-4 text-xl font-semibold text-gray-600">Challenges</h2>
 
-  <ul class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
+  <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12">
     {#each challenges as challenge, index}
       {#if areChallengesVisible && showShow(challenge)}
         {@const isEven = index % 2 === 0}
@@ -266,7 +266,7 @@
         >
           <a
             href={challenge.slug}
-            class="h-[400px] px-4 py-2 block shadow-md border rounded-lg relative {!challenge.isDone &&
+            class=" px-4 py-2 block shadow-md border rounded-lg relative {!challenge.isDone &&
               'pointer-events-none blur-sm'}"
           >
             <span
@@ -279,12 +279,12 @@
               <span class="text-xl">{emojis[index % emojisLength]}</span>
             </span>
 
-            <div class="bottom-2 absolute">
+            <img class="mt-8" src={challenge.image} alt={challenge.title} />
+
+            <div class="mt-4 h-[100px]">
               <h2 class="text-lg font-semibold text-gray-600">{challenge.title}</h2>
               <p class="text-sm text-gray-400">{challenge.description}</p>
             </div>
-
-            <img class="mt-8" src={challenge.image} alt={challenge.title} />
           </a>
         </li>
       {/if}
