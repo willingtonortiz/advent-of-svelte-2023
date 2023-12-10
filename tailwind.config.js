@@ -14,6 +14,9 @@ const config = {
       },
     },
     extend: {
+      aspectRatio: {
+        portrait: "3 / 4",
+      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",

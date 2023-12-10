@@ -75,9 +75,9 @@
     {
       id: 8,
       slug: "challenge-08",
-      title: "challenge-08",
-      description: "challange-08",
-      isDone: false,
+      title: "Santa's Memory Game",
+      description: "Santa's Memory Game",
+      isDone: true,
       image: challenge_01,
     },
     {
