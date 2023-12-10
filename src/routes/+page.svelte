@@ -67,9 +67,9 @@
     {
       id: 7,
       slug: "challenge-07",
-      title: "challenge-07",
-      description: "challange-07",
-      isDone: false,
+      title: "Morse Code Translator",
+      description: "Morse Code Translator",
+      isDone: true,
       image: challenge_01,
     },
     {

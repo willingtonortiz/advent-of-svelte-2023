@@ -21,12 +21,10 @@
   $: createdToysTasks = tasks.filter((task) => task.task === "CREATED_TOY");
   $: totalToysCreated = createdToysTasks.length;
   $: totalPresentsWrapped = wrappedPresentsTasks.length;
-  $: averageToyCreationTime = (
-    createdToysTasks.reduce((acc, task) => acc + task.minutesTaken, 0) / totalToysCreated
-  ).toFixed(2);
-  $: averagePresentWrappingTime = (
-    wrappedPresentsTasks.reduce((acc, task) => acc + task.minutesTaken, 0) / totalPresentsWrapped
-  ).toFixed(2);
+  $: averageToyCreationTime =
+    createdToysTasks.reduce((acc, task) => acc + task.minutesTaken, 0) / totalToysCreated;
+  $: averagePresentWrappingTime =
+    wrappedPresentsTasks.reduce((acc, task) => acc + task.minutesTaken, 0) / totalPresentsWrapped;
   $: elvesTasks = tasks.reduce(
     (acc, task) => {
       if (!acc[task.elf]) {
@@ -46,6 +44,7 @@
     },
     {} as Record<string, { presentsWrapped: Task[]; toysCreated: Task[] }>,
   );
+  // TODO: Calculate elves metrics (average presents wrapped, average toys created, etc)
   $: mostToysCreatedElf = Object.keys(elvesTasks).reduce(
     (acc, elf) => {
       if (elvesTasks[elf].toysCreated.length > acc.toysCreated.length) {
@@ -137,7 +136,7 @@
       </Card.Header>
 
       <Card.Content>
-        <p class="text-2xl font-semibold">{averageToyCreationTime} minutes</p>
+        <p class="text-2xl font-semibold">{averageToyCreationTime.toFixed(2)} minutes</p>
       </Card.Content>
     </Card.Root>
 
@@ -157,7 +156,7 @@
       </Card.Header>
 
       <Card.Content>
-        <p class="text-2xl font-semibold">{averagePresentWrappingTime} minutes</p>
+        <p class="text-2xl font-semibold">{averagePresentWrappingTime.toFixed(2)} minutes</p>
       </Card.Content>
     </Card.Root>
   </div>
