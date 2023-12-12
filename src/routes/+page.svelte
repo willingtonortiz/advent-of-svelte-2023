@@ -83,17 +83,17 @@
     {
       id: 9,
       slug: "challenge-09",
-      title: "challenge-09",
-      description: "challange-09",
-      isDone: false,
+      title: "Santa's Final Countdown",
+      description: "Santa's Final Countdown",
+      isDone: true,
       image: challenge_01,
     },
     {
       id: 10,
       slug: "challenge-10",
-      title: "challenge-10",
-      description: "challange-10",
-      isDone: false,
+      title: "Day 10 - Pop-up! Spreading the holiday cheer",
+      description: "Day 10 - Pop-up! Spreading the holiday cheer",
+      isDone: true,
       image: challenge_01,
     },
     {
