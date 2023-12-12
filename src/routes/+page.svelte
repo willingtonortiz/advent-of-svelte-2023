@@ -78,7 +78,7 @@
       title: "Santa's Memory Game",
       description: "Santa's Memory Game",
       isDone: true,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 9,
@@ -94,14 +94,14 @@
       title: "Day 10 - Pop-up! Spreading the holiday cheer",
       description: "Day 10 - Pop-up! Spreading the holiday cheer",
       isDone: true,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 11,
       slug: "challenge-11",
-      title: "challenge-11",
-      description: "challange-11",
-      isDone: false,
+      title: "Tinsel Transformers",
+      description: "Tinsel Transformers",
+      isDone: true,
       image: challenge_01,
     },
     {
@@ -110,7 +110,7 @@
       title: "challenge-12",
       description: "challange-12",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 13,
@@ -126,7 +126,7 @@
       title: "challenge-14",
       description: "challange-14",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 15,
@@ -142,7 +142,7 @@
       title: "challenge-16",
       description: "challange-16",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 17,
@@ -158,7 +158,7 @@
       title: "challenge-18",
       description: "challange-18",
       isDone: false,
-      image: challenge_01,
+      image: challenge_02,
     },
     {
       id: 19,
