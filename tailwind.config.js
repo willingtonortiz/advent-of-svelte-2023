@@ -17,6 +17,9 @@ const config = {
       aspectRatio: {
         portrait: "3 / 4",
       },
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",

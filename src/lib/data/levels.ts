@@ -118,8 +118,8 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 14,
     slug: "challenge-14",
-    title: "challenge-14",
-    description: "challange-14",
+    title: "Snowfall",
+    description: "Configurable snowfall component",
     isDone: false,
     image: challenge_02,
   },
