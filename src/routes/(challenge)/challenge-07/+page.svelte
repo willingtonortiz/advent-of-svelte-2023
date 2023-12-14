@@ -1,8 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { Play } from "lucide-svelte";
-  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
-  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
   import Button from "$lib/components/ui/button/button.svelte";
   import Label from "$lib/components/ui/label/label.svelte";
   import Input from "$lib/components/ui/input/input.svelte";
@@ -134,65 +132,59 @@
   });
 </script>
 
-<main class="mt-4 mb-12">
-  <ChallengeBackButton />
-
-  <ChallengeTitle>Challenge 07 - Morse Code Translator</ChallengeTitle>
-
-  <div>
-    <h2 class="mb-1 text-lg font-semibold">Text to morse</h2>
-
-    <div class="grid grid-cols-1 gap-4 p-4 bg-gray-100 rounded-lg sm:grid-cols-2">
-      <div class="space-y-1">
-        <Label>Normal text</Label>
-
-        <Input
-          class={"bg-white"}
-          type="text"
-          placeholder={"Type your text..."}
-          bind:value={textInput}
-        />
-      </div>
-
-      <div class="space-y-1">
-        <Label>Morse result</Label>
-
-        <div class="flex gap-2 flex-nowrap">
-          <Input class={"bg-white"} type="text" readonly bind:value={morseResult} />
-
-          <Button on:click={() => playMorse(morseResult)}>
-            <Play size={20} />
-          </Button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <h2 class="mt-8 mb-1 text-lg font-semibold">Morse to text</h2>
+<div>
+  <h2 class="mb-1 text-lg font-semibold">Text to morse</h2>
 
   <div class="grid grid-cols-1 gap-4 p-4 bg-gray-100 rounded-lg sm:grid-cols-2">
     <div class="space-y-1">
-      <Label>Morse text</Label>
-
-      <div class="flex gap-2 flex-nowrap">
-        <Input class={"bg-white"} type="text" bind:value={morseInput} />
-
-        <Button on:click={() => playMorse(morseInput)}>
-          <Play size={20} />
-        </Button>
-      </div>
-    </div>
-
-    <div class="space-y-1">
-      <Label>Text result</Label>
+      <Label>Normal text</Label>
 
       <Input
         class={"bg-white"}
         type="text"
         placeholder={"Type your text..."}
-        readonly
-        bind:value={textResult}
+        bind:value={textInput}
       />
     </div>
+
+    <div class="space-y-1">
+      <Label>Morse result</Label>
+
+      <div class="flex gap-2 flex-nowrap">
+        <Input class={"bg-white"} type="text" readonly bind:value={morseResult} />
+
+        <Button on:click={() => playMorse(morseResult)}>
+          <Play size={20} />
+        </Button>
+      </div>
+    </div>
   </div>
-</main>
+</div>
+
+<h2 class="mt-8 mb-1 text-lg font-semibold">Morse to text</h2>
+
+<div class="grid grid-cols-1 gap-4 p-4 bg-gray-100 rounded-lg sm:grid-cols-2">
+  <div class="space-y-1">
+    <Label>Morse text</Label>
+
+    <div class="flex gap-2 flex-nowrap">
+      <Input class={"bg-white"} type="text" bind:value={morseInput} />
+
+      <Button on:click={() => playMorse(morseInput)}>
+        <Play size={20} />
+      </Button>
+    </div>
+  </div>
+
+  <div class="space-y-1">
+    <Label>Text result</Label>
+
+    <Input
+      class={"bg-white"}
+      type="text"
+      placeholder={"Type your text..."}
+      readonly
+      bind:value={textResult}
+    />
+  </div>
+</div>

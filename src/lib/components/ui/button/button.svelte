@@ -20,6 +20,7 @@
   {...$$restProps}
   on:click
   on:keydown
+  on:blur
 >
   <slot />
 </ButtonPrimitive.Root>

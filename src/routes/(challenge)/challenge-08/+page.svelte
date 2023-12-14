@@ -2,8 +2,6 @@
   import { Set } from "immutable";
   import { intervalToDuration } from "date-fns";
   import { cn } from "$lib/utils";
-  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
-  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
   import { Button } from "$lib/components/ui/button";
 
   const cards = Array.from({ length: 24 }).map((_, index) => ({
@@ -118,45 +116,39 @@
   }
 </script>
 
-<main class="mt-4">
-  <ChallengeBackButton />
-
-  <ChallengeTitle>Challenge 08 - Santa's Memory Game</ChallengeTitle>
-
-  <div class="mb-12">
-    <div class="flex flex-nowrap justify-between mb-4 items-center">
-      <div class="text-xl font-semibold flex flex-col flex-nowrap gap-2">
-        <span>Score: {score}</span>
-        <span>Highest Score: {highestScore}</span>
-        <span>
-          Time: {zeroPad(duration.hours)}:{zeroPad(duration.minutes)}:{zeroPad(duration.seconds)}
-        </span>
-      </div>
-
-      <div>
-        <Button on:click={restartGame}>Restart</Button>
-      </div>
+<div class="mb-12">
+  <div class="flex flex-nowrap justify-between mb-4 items-center">
+    <div class="text-xl font-semibold flex flex-col flex-nowrap gap-2">
+      <span>Score: {score}</span>
+      <span>Highest Score: {highestScore}</span>
+      <span>
+        Time: {zeroPad(duration.hours)}:{zeroPad(duration.minutes)}:{zeroPad(duration.seconds)}
+      </span>
     </div>
 
-    <ul class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
-      {#each gameCards as card}
-        {@const isShown =
-          matchedIds.has(card.id) || isSameCard(card, selectedCard) || isSameCard(card, secondCard)}
-
-        <button
-          class={cn(
-            "aspect-portrait bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200",
-            secondCard && "pointer-events-none",
-          )}
-          on:click={() => toggleCard(card)}
-        >
-          {#if isShown}
-            <img class="aspect-portrait" src={card.url} alt="Card {card.id}" />
-          {:else}
-            <span class="block font-semibold text-xl px-4 text-center">Santa Card</span>
-          {/if}
-        </button>
-      {/each}
-    </ul>
+    <div>
+      <Button on:click={restartGame}>Restart</Button>
+    </div>
   </div>
-</main>
+
+  <ul class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2">
+    {#each gameCards as card}
+      {@const isShown =
+        matchedIds.has(card.id) || isSameCard(card, selectedCard) || isSameCard(card, secondCard)}
+
+      <button
+        class={cn(
+          "aspect-portrait bg-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-200",
+          secondCard && "pointer-events-none",
+        )}
+        on:click={() => toggleCard(card)}
+      >
+        {#if isShown}
+          <img class="aspect-portrait" src={card.url} alt="Card {card.id}" />
+        {:else}
+          <span class="block font-semibold text-xl px-4 text-center">Santa Card</span>
+        {/if}
+      </button>
+    {/each}
+  </ul>
+</div>

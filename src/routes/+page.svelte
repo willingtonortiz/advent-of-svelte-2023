@@ -3,212 +3,7 @@
   import { fade } from "svelte/transition";
   import { getDate } from "date-fns";
   import { onMount } from "svelte";
-  import challenge_01 from "$lib/assets/challenges/challenge-01.webp";
-  import challenge_02 from "$lib/assets/challenges/challenge-02.webp";
-
-  type Challenge = {
-    id: number;
-    title: string;
-    image: string;
-    slug: string;
-    description: string;
-    isDone: boolean;
-  };
-
-  const challenges: Challenge[] = [
-    {
-      id: 1,
-      slug: "challenge-01",
-      title: "Naughty or Nice",
-      description: "Help the elves to keep track of children's behavior",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 2,
-      slug: "challenge-02",
-      title: "Cookies for Santa",
-      description: "Click on the colorful cookies to give them to Santa",
-      isDone: true,
-      image: challenge_02,
-    },
-    {
-      id: 3,
-      slug: "challenge-03",
-      title: "Sled Load Balancer",
-      description: "Sled Load Balancer",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 4,
-      slug: "challenge-04",
-      title: "Santa's Heart Rate Monitor",
-      description: "Santa's Heart Rate Monitor",
-      isDone: true,
-      image: challenge_02,
-    },
-    {
-      id: 5,
-      slug: "challenge-05",
-      title: "Elf Productivity Dashboard",
-      description: "Elf Productivity Dashboard",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 6,
-      slug: "challenge-06",
-      title: "challenge-06",
-      description: "challange-06",
-      isDone: false,
-      image: challenge_02,
-    },
-    {
-      id: 7,
-      slug: "challenge-07",
-      title: "Morse Code Translator",
-      description: "Morse Code Translator",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 8,
-      slug: "challenge-08",
-      title: "Santa's Memory Game",
-      description: "Santa's Memory Game",
-      isDone: true,
-      image: challenge_02,
-    },
-    {
-      id: 9,
-      slug: "challenge-09",
-      title: "Santa's Final Countdown",
-      description: "Santa's Final Countdown",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 10,
-      slug: "challenge-10",
-      title: "Day 10 - Pop-up! Spreading the holiday cheer",
-      description: "Day 10 - Pop-up! Spreading the holiday cheer",
-      isDone: true,
-      image: challenge_02,
-    },
-    {
-      id: 11,
-      slug: "challenge-11",
-      title: "Tinsel Transformers",
-      description: "Tinsel Transformers",
-      isDone: true,
-      image: challenge_01,
-    },
-    {
-      id: 12,
-      slug: "challenge-12",
-      title: "challenge-12",
-      description: "challange-12",
-      isDone: false,
-      image: challenge_02,
-    },
-    {
-      id: 13,
-      slug: "challenge-13",
-      title: "challenge-13",
-      description: "challange-13",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 14,
-      slug: "challenge-14",
-      title: "challenge-14",
-      description: "challange-14",
-      isDone: false,
-      image: challenge_02,
-    },
-    {
-      id: 15,
-      slug: "challenge-15",
-      title: "challenge-15",
-      description: "challange-15",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 16,
-      slug: "challenge-16",
-      title: "challenge-16",
-      description: "challange-16",
-      isDone: false,
-      image: challenge_02,
-    },
-    {
-      id: 17,
-      slug: "challenge-17",
-      title: "challenge-17",
-      description: "challange-17",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 18,
-      slug: "challenge-18",
-      title: "challenge-18",
-      description: "challange-18",
-      isDone: false,
-      image: challenge_02,
-    },
-    {
-      id: 19,
-      slug: "challenge-19",
-      title: "challenge-19",
-      description: "challange-19",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 20,
-      slug: "challenge-20",
-      title: "challenge-20",
-      description: "challange-20",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 21,
-      slug: "challenge-21",
-      title: "challenge-21",
-      description: "challange-21",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 22,
-      slug: "challenge-22",
-      title: "challenge-22",
-      description: "challange-22",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 23,
-      slug: "challenge-23",
-      title: "challenge-23",
-      description: "challange-23",
-      isDone: false,
-      image: challenge_01,
-    },
-    {
-      id: 24,
-      slug: "challenge-24",
-      title: "challenge-24",
-      description: "challange-24",
-      isDone: false,
-      image: challenge_01,
-    },
-  ];
+  import { CHALLENGES, type Challenge } from "$lib/data/levels";
 
   // Add emojis based on the challenges?
   const emojis = ["🎅", "🎄", "⭐", "🎁", "❄️", "☃️", "🧦", "🧝"];
@@ -217,7 +12,7 @@
 
   const today = getDate(new Date());
   const totalChallenges = today;
-  const completedChallenges = challenges.filter((challenge) => challenge.isDone).length;
+  const completedChallenges = CHALLENGES.filter((challenge) => challenge.isDone).length;
   const uncompletedChallenges = today - completedChallenges;
 
   function showShow({ id }: Challenge) {
@@ -256,7 +51,7 @@
   <h2 class="mb-4 text-xl font-semibold text-gray-600">Challenges</h2>
 
   <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12">
-    {#each challenges as challenge, index}
+    {#each CHALLENGES as challenge, index}
       {#if areChallengesVisible && showShow(challenge)}
         {@const isEven = index % 2 === 0}
 

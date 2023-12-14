@@ -11,9 +11,7 @@
     type NumberValue,
   } from "d3";
   import { browser } from "$app/environment";
-  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
-  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
-  import { Heart, HeartHandshake, HeartPulse } from "lucide-svelte";
+  import { HeartPulse } from "lucide-svelte";
 
   const apiUrl = "https://advent.sveltesociety.dev/data/2023/day-four.json";
 
@@ -167,27 +165,21 @@
   });
 </script>
 
-<main class="mt-4">
-  <ChallengeBackButton />
+<p>Santa's current Heart Rate</p>
 
-  <ChallengeTitle>Challenge 04 - Santa's Heart Rate Monitor</ChallengeTitle>
+<div class="grid grid-cols-[1fr_400px] gap-4">
+  <div class="p-4 bg-gray-100 rounded-xl place-self-center">
+    <h1 class="text-sm">Heart Rate</h1>
 
-  <p>Santa's current Heart Rate</p>
-
-  <div class="grid grid-cols-[1fr_400px] gap-4">
-    <div class="p-4 bg-gray-100 rounded-xl place-self-center">
-      <h1 class="text-sm">Heart Rate</h1>
-
-      {#if heartRateList.length > 0}
-        <div class="flex gap-2 mt-2 flex-nowrap">
-          <HeartPulse class="w-12 h-12 text-red-400" />
-          <p class="text-4xl">{heartRateList[heartRateList.length - 1].value}</p>
-        </div>
-      {/if}
-    </div>
-
-    <div class="p-4 bg-gray-100 rounded-xl place-self-center">
-      <div bind:this={graphContainer}></div>
-    </div>
+    {#if heartRateList.length > 0}
+      <div class="flex gap-2 mt-2 flex-nowrap">
+        <HeartPulse class="w-12 h-12 text-red-400" />
+        <p class="text-4xl">{heartRateList[heartRateList.length - 1].value}</p>
+      </div>
+    {/if}
   </div>
-</main>
+
+  <div class="p-4 bg-gray-100 rounded-xl place-self-center">
+    <div bind:this={graphContainer}></div>
+  </div>
+</div>
