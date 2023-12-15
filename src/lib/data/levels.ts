@@ -120,7 +120,7 @@ export const CHALLENGES: Challenge[] = [
     slug: "challenge-14",
     title: "Snowfall",
     description: "Configurable snowfall component",
-    isDone: false,
+    isDone: true,
     image: challenge_02,
   },
   {
