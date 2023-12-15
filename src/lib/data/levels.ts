@@ -126,9 +126,9 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 15,
     slug: "challenge-15",
-    title: "challenge-15",
-    description: "challange-15",
-    isDone: false,
+    title: "Spankling Snowglobes",
+    description: "Spankling Snowglobes",
+    isDone: true,
     image: challenge_01,
   },
   {

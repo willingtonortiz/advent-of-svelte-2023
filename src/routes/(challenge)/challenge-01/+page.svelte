@@ -82,7 +82,6 @@
 </script>
 
 <!-- TODO: Total children, Nicest Child, Naughtiest Child -->
-
 <div class="mb-4">
   <button
     class="flex items-center px-2 py-1 transition-colors border rounded-md hover:bg-gray-100"
