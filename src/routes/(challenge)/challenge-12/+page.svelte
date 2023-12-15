@@ -23,7 +23,7 @@
     url: `https://advent.sveltesociety.dev/data/2023/day-twelve/${index + 1}.png`,
   }));
 
-  const colors = [
+  export const PALE_COLORS = [
     "bg-gray-100 border-gray-200",
     "bg-red-100 border-red-200",
     "bg-yellow-100 border-yellow-200",
@@ -36,7 +36,7 @@
 
   let title = "Your title";
   let message = "Your message";
-  let selectedColor = colors[0];
+  let selectedColor = PALE_COLORS[0];
   let stickers: StickerInstance[] = [];
 
   function setColor(color: string) {
@@ -111,7 +111,7 @@
   <p class="mb-2">Select a color</p>
 
   <ul class="flex gap-4 mb-8">
-    {#each colors as color}
+    {#each PALE_COLORS as color}
       <Button
         class="w-16 h-10  rounded-lg {color} hover:{color} border"
         on:click={() => setColor(color)}

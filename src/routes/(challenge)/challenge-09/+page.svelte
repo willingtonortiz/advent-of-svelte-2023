@@ -2,8 +2,6 @@
   import { onMount } from "svelte";
   import { fly } from "svelte/transition";
   import { intervalToDuration, differenceInSeconds } from "date-fns";
-  import ChallengeTitle from "$lib/components/molecules/ChallengeTitle.svelte";
-  import ChallengeBackButton from "$lib/components/molecules/ChallengeBackButton.svelte";
 
   const christmas = new Date("December 25, 2023 00:00:00");
   let intervalId: number | undefined = undefined;

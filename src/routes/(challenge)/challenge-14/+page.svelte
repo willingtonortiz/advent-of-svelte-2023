@@ -1,8 +1,8 @@
 <script lang="ts">
+  import { Snowflake } from "lucide-svelte";
   import { Label } from "$lib/components/ui/label";
   import { Slider } from "$lib/components/ui/slider";
   import Snowfall from "$lib/components/molecules/Snowfall.svelte";
-  import { Snowflake } from "lucide-svelte";
 
   let quantity = [50];
   let speed = [5];
@@ -21,7 +21,7 @@
   </div>
 
   <div class="space-y-2">
-    <Label>Speed ({speed[0]}) [1 - 10]</Label>
+    <Label>Speed ({speed[0]}) [1 - 100]</Label>
     <Slider bind:value={speed} min={1} max={100} step={1} />
   </div>
 </div>

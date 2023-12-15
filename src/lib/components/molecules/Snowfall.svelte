@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { Snowflake } from "lucide-svelte";
-
   let container: HTMLDivElement | undefined;
   $: containerWidth = container?.clientWidth ?? 0;
   export let quantity = [50];
   export let speed = [5];
 
-  function generateCSSVariables(speed: number) {
+  function generateCSSVariables(speed: number, containerWidth: number) {
     const leftInit = Math.random() * containerWidth;
     // A little variation between leftInit and leftEnd
     const leftEnd = leftInit + Math.random() * 400 - 200;
@@ -23,7 +21,7 @@
 <div class="w-full border rounded-lg h-[400px] relative overflow-hidden" bind:this={container}>
   <!-- eslint-disable-next-line @typescript-eslint/no-unused-vars -->
   {#each { length: quantity[0] } as _}
-    <div class="snowflake" style={generateCSSVariables(speed[0])}>
+    <div class="snowflake" style={generateCSSVariables(speed[0], containerWidth)}>
       <slot />
     </div>
   {/each}
