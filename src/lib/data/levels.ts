@@ -166,10 +166,10 @@ export const CHALLENGES: Challenge[] = [
   {
     id: 20,
     slug: "challenge-20",
-    title: "challenge-20",
-    description: "challange-20",
-    isDone: false,
-    image: challenge_01,
+    title: "Jingle Jokes",
+    description: "Jingle Jokes",
+    isDone: true,
+    image: challenge_02,
   },
   {
     id: 21,
@@ -185,7 +185,7 @@ export const CHALLENGES: Challenge[] = [
     title: "challenge-22",
     description: "challange-22",
     isDone: false,
-    image: challenge_01,
+    image: challenge_02,
   },
   {
     id: 23,
@@ -201,7 +201,7 @@ export const CHALLENGES: Challenge[] = [
     title: "challenge-24",
     description: "challange-24",
     isDone: false,
-    image: challenge_01,
+    image: challenge_02,
   },
 ];
 
