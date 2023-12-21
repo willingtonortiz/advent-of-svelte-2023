@@ -83,43 +83,30 @@
 
 <main class="mt-4 mb-12">
   {#if coords !== null && weather !== null}
-    <div class="mt-8 mx-auto w-fit p-4">
-      <div
-        class="rounded-lg border bg-card text-card-foreground shadow-sm flex flex-col items-center"
-        data-v0-t="card"
-      >
-        <div class="flex flex-col space-y-1.5 p-6 pb-2">
-          <h3 class="tracking-tight text-lg font-semibold">Current Weather</h3>
-        </div>
+    <div class="rounded-lg border shadow-sm flex flex-col items-center gap-4 py-4">
+      <h3 class="text-lg font-semibold">Current Weather</h3>
 
-        <div class="p-6 flex flex-col items-center">
-          <div class="flex items-center space-x-2">
-            <div class="text-3xl font-bold">{weather.current.temperature_2m}°C</div>
-          </div>
-        </div>
+      <div class="text-3xl font-bold">{weather.current.temperature_2m}°C</div>
+    </div>
+
+    <div class="rounded-lg border shadow-sm mt-4">
+      <div class="flex flex-col p-4">
+        <h3 class="text-lg font-semibold">Daily Forecast</h3>
       </div>
 
-      <div class="mt-4 space-y-2">
-        <div class="rounded-lg border bg-card text-card-foreground shadow-sm" data-v0-t="card">
-          <div class="flex flex-col p-4">
-            <h3 class="tracking-tight text-lg font-semibold">Daily Forecast</h3>
-          </div>
+      <div class="px-6 py-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {#each Object.entries(weatherGroupedByDay) as [day, items]}
+          <div class="border p-4 rounded-lg bg-gray-50 space-y-4">
+            <p class="text-lg font-semibold text-center">
+              {#if day.split("-")[0] === "25"}
+                🎅🎄
+              {/if}
+              {day}
+            </p>
 
-          <div class="px-6 py-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {#each Object.entries(weatherGroupedByDay) as [day, items]}
-              <div class="border p-4 rounded-lg bg-gray-50 space-y-4">
-                <p class="text-lg font-semibold text-center">
-                  {#if day.split("-")[0] === "25"}
-                    🎅🎄
-                  {/if}
-                  {day}
-                </p>
-
-                <TemperatureChart data={items} />
-              </div>
-            {/each}
+            <TemperatureChart data={items} />
           </div>
-        </div>
+        {/each}
       </div>
     </div>
   {:else}
