@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Gift, Clock, TreePine } from "lucide-svelte";
   import { fade } from "svelte/transition";
-  import { getDate } from "date-fns";
+  import { isBefore } from "date-fns";
   import { onMount } from "svelte";
   import { CHALLENGES, type Challenge } from "$lib/data/levels";
 
@@ -10,13 +10,14 @@
   const emojisLength = emojis.length;
   let areChallengesVisible = false;
 
-  const today = getDate(new Date());
-  const totalChallenges = today;
+  const today = new Date();
+  const totalChallenges = CHALLENGES.length;
   const completedChallenges = CHALLENGES.filter((challenge) => challenge.isDone).length;
-  const uncompletedChallenges = today - completedChallenges;
+  const uncompletedChallenges = totalChallenges - completedChallenges;
 
-  function showShow({ id }: Challenge) {
-    return id <= today;
+  function shouldShow({ id }: Challenge) {
+    const challengeDate = new Date(2023, 11, id);
+    return isBefore(challengeDate, today);
   }
 
   onMount(() => {
@@ -52,7 +53,7 @@
 
   <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-12">
     {#each CHALLENGES as challenge, index}
-      {#if areChallengesVisible && showShow(challenge)}
+      {#if areChallengesVisible && shouldShow(challenge)}
         {@const isEven = index % 2 === 0}
 
         <li
